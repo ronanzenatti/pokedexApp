@@ -1,3 +1,36 @@
-ion-item{
-    border-left: 5px solid #fd7d24;
+$tipos: (
+    normal: #f4f4f4,
+    grass: #9bcc50,
+    fire: #fd7d24,
+    water: #4592c4,
+    eletric: #ffff00,
+    psychic: #f366b9,
+    fighting: #f16e57,
+    darkness: #707070,
+    stell: #c0c0c0,
+    fairy: #fdb9e9,
+    dragon:  #53a4cf,
+    bug: #729f3f,
+    ghost: #7b62a3,
+    ground: #8b4513,
+    fly:  #3dc7ef,
+    rock: #808080,
+    ice: #51c4e7,
+    poison: #b97fc9
+);
+
+
+@each $track,
+$value in map-remove($tipos) {
+  ion-item[track='#{$track}'] ion-label {
+    border-left: 2px solid $value;
+    padding-left: 5px;    
+  }
+}
+
+ion-chip {
+    height: 60px;
+    margin-right: 10px;
+    font-weight: bolder;
+    font-size: 20px;
 }

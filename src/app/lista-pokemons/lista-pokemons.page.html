@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar color="warning">
     <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Lista de Pokemons</ion-title>
@@ -9,41 +10,61 @@
 
 <ion-content padding color="medium">
   <ion-list color="light">
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-thumbnail>
+
+    <ion-item track="grass">
+      <ion-chip color="grass" slot="start">001</ion-chip>
       <ion-label text-wrap>
-        <h1>Nome</h1>
-        <ion-badge color="primary">Tipo</ion-badge> &nbsp; <ion-badge color="warning">Tipo</ion-badge>
+        <h1>Bulbasaur</h1>
+        <ion-badge color="grass">Grass</ion-badge> &nbsp; <ion-badge color="poison">Poison</ion-badge>
       </ion-label>
+      <ion-thumbnail slot="end">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png">
+      </ion-thumbnail>
     </ion-item>
-    <ion-item>
-        <ion-thumbnail slot="start">
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-        </ion-thumbnail>
-        <ion-label text-wrap>
-          <h1>Nome</h1>
-          <ion-badge color="primary">Tipo</ion-badge> &nbsp; <ion-badge color="warning">Tipo</ion-badge>
-        </ion-label>
-      </ion-item>
-      <ion-item>
-          <ion-thumbnail slot="start">
-            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-          </ion-thumbnail>
-          <ion-label text-wrap>
-            <h1>Nome</h1>
-            <ion-badge color="primary">Tipo</ion-badge> &nbsp; <ion-badge color="warning">Tipo</ion-badge>
-          </ion-label>
-        </ion-item>
-        <ion-item>
-            <ion-thumbnail slot="start">
-              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-            </ion-thumbnail>
-            <ion-label text-wrap>
-              <h1>Nome</h1>
-              <ion-badge color="primary">Tipo</ion-badge> &nbsp; <ion-badge color="warning">Tipo</ion-badge>
-            </ion-label>
-          </ion-item>
+
+    <ion-item track="fire">
+      <ion-chip color="fire" slot="start">004</ion-chip>
+      <ion-label text-wrap>
+        <h1>Charmander</h1>
+        <ion-badge color="fire">Fire</ion-badge>
+      </ion-label>
+      <ion-thumbnail slot="end">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png">
+      </ion-thumbnail>
+    </ion-item>
+
+    <ion-item track="water">
+      <ion-chip color="water" slot="start">007</ion-chip>
+      <ion-label text-wrap>
+        <h1>Squirtle</h1>
+        <ion-badge color="water">Water</ion-badge>
+      </ion-label>
+      <ion-thumbnail slot="end">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png">
+      </ion-thumbnail>
+    </ion-item>
+
+    <ion-item track="eletric">
+      <ion-chip color="eletric" slot="start">025</ion-chip>
+      <ion-label text-wrap>
+        <h1>Picachu</h1>
+        <ion-badge color="eletric">Eletric</ion-badge>
+      </ion-label>
+      <ion-thumbnail slot="end">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/025.png">
+      </ion-thumbnail>
+    </ion-item>
+
+    <ion-item track="fly">
+      <ion-chip color="fly" slot="start">017</ion-chip>
+      <ion-label text-wrap>
+        <h1>Pidgeotto</h1>
+        <ion-badge color="fly">Fly</ion-badge>
+      </ion-label>
+      <ion-thumbnail slot="end">
+        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/017.png">
+      </ion-thumbnail>
+    </ion-item>
+
   </ion-list>
 </ion-content>
