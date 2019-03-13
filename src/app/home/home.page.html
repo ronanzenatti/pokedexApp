@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>      
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
       Pokedex Etec
@@ -9,21 +9,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding color="medium" fullscreen>
+<ion-content padding color="medium">
 
-  <a routerLink="/lista-pokemons">
-    <ion-card color="light">
-      <ion-card-content>
-        <ion-img src="assets/button_pokemons.png"> </ion-img>
-      </ion-card-content>
-    </ion-card>
-  </a>
-  <a routerLink="/tipos-pokemons">
-    <ion-card color="light">
-      <ion-card-content>
-        <ion-img src="assets/button_tipos.png"> </ion-img>
-      </ion-card-content>
-    </ion-card>
-  </a>
+  <ion-card color="light" routerLink="/lista-pokemons">
+    <ion-card-content>
+      <ion-img src="assets/button_pokemons.png"> </ion-img>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="light" routerLink="/tipos-pokemons">
+    <ion-card-content>
+      <ion-img src="assets/button_tipos.png"> </ion-img>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
