@@ -1,36 +1,38 @@
 <ion-header>
   <ion-toolbar color="warning">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Lista de Pokemons</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-toolbar color="warning">
-  <ion-searchbar placeholder="Buscar" color="light"></ion-searchbar>
+  <ion-searchbar (ionInput)="buscaPokemon($event)" placeholder="Buscar por nome" color="light"></ion-searchbar>
 </ion-toolbar>
 
 <ion-content color="medium">
   <ion-list color="light">
 
     <!-- habilita as opções do item -->
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let pokemon of listaFiltrada">
       <!-- dados do pokemon -->
-      <ion-item track="grass" routerLink="/bulbasaur">
-        <ion-chip color="grass" slot="start">001</ion-chip>
+      <ion-item [routerLink]="'/' + pokemon.nome | lowercase ">
+        <ion-chip [color]="pokemon.tipos[0]" slot="start">{{pokemon.numero}}</ion-chip>
         <ion-label>
-          <h2>Bulbasaur</h2>
-          <ion-badge color="grass">Grass</ion-badge> &nbsp; <ion-badge color="poison">Poison</ion-badge>
+          <h2>{{pokemon.nome}}</h2>
+          <ion-badge *ngFor="let tipo of pokemon.tipos" [color]="tipo">{{tipo}}</ion-badge>
         </ion-label>
         <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png">
+          <img [src]="urlImg + pokemon.img">
         </ion-thumbnail>
       </ion-item>
       <!-- Opção do pokemon -->
       <ion-item-options side="end">
-        <ion-item-option color="primary">
+        <ion-item-option color="primary" (click)="verPokemon(pokemon.numero)">
           <h1>
             <ion-icon name="star"></ion-icon>
           </h1>
@@ -43,285 +45,6 @@
       </ion-item-options>
     </ion-item-sliding>
 
-    <!-- habilita as opções do item -->
-    <ion-item-sliding>
-      <!-- dados do pokemon -->
-      <ion-item track="fire">
-        <ion-chip color="fire" slot="start">004</ion-chip>
-        <ion-label>
-          <h2>Charmander</h2>
-          <ion-badge color="fire">Fire</ion-badge>
-        </ion-label>
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png">
-        </ion-thumbnail>
-      </ion-item>
-      <!-- Opção do pokemon -->
-      <ion-item-options side="end">
-        <ion-item-option color="primary">
-          <h1>
-            <ion-icon name="star"></ion-icon>
-          </h1>
-        </ion-item-option>
-        <ion-item-option color="danger">
-          <h1>
-            <ion-icon name="share"></ion-icon>
-          </h1>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <!-- habilita as opções do item -->
-    <ion-item-sliding>
-      <!-- dados do pokemon -->
-      <ion-item track="water">
-        <ion-chip color="water" slot="start">007</ion-chip>
-        <ion-label>
-          <h2>Squirtle</h2>
-          <ion-badge color="water">Water</ion-badge>
-        </ion-label>
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png">
-        </ion-thumbnail>
-      </ion-item>
-      <!-- Opção do pokemon -->
-      <ion-item-options side="end">
-        <ion-item-option color="primary">
-          <h1>
-            <ion-icon name="star"></ion-icon>
-          </h1>
-        </ion-item-option>
-        <ion-item-option color="danger">
-          <h1>
-            <ion-icon name="share"></ion-icon>
-          </h1>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <!-- habilita as opções do item -->
-    <ion-item-sliding>
-      <!-- dados do pokemon -->
-      <ion-item track="eletric">
-        <ion-chip color="eletric" slot="start">025</ion-chip>
-        <ion-label>
-          <h2>Picachu</h2>
-          <ion-badge color="eletric">Eletric</ion-badge>
-        </ion-label>
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/025.png">
-        </ion-thumbnail>
-      </ion-item>
-      <!-- Opção do pokemon -->
-      <ion-item-options side="end">
-        <ion-item-option color="primary">
-          <h1>
-            <ion-icon name="star"></ion-icon>
-          </h1>
-        </ion-item-option>
-        <ion-item-option color="danger">
-          <h1>
-            <ion-icon name="share"></ion-icon>
-          </h1>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <!-- habilita as opções do item -->
-    <ion-item-sliding>
-      <!-- dados do pokemon -->
-      <ion-item track="bug">
-        <ion-chip color="bug" slot="start">010</ion-chip>
-        <ion-label>
-          <h2>Caterpie</h2>
-          <ion-badge color="bug">Bug</ion-badge>
-        </ion-label>
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/010.png">
-        </ion-thumbnail>
-      </ion-item>
-      <!-- Opção do pokemon -->
-      <ion-item-options side="end">
-        <ion-item-option color="primary">
-          <h1>
-            <ion-icon name="star"></ion-icon>
-          </h1>
-        </ion-item-option>
-        <ion-item-option color="danger">
-          <h1>
-            <ion-icon name="share"></ion-icon>
-          </h1>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <!-- habilita as opções do item -->
-    <ion-item-sliding>
-      <!-- dados do pokemon -->
-      <ion-item track="normal">
-        <ion-chip color="normal" slot="start">039</ion-chip>
-        <ion-label>
-          <h2>Jigglypuff</h2>
-          <ion-badge color="normal">Normal</ion-badge> &nbsp; <ion-badge color="fairy">Fairy</ion-badge>
-        </ion-label>
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/039.png">
-        </ion-thumbnail>
-      </ion-item>
-      <!-- Opção do pokemon -->
-      <ion-item-options side="end">
-        <ion-item-option color="primary">
-          <h1>
-            <ion-icon name="star"></ion-icon>
-          </h1>
-        </ion-item-option>
-        <ion-item-option color="danger">
-          <h1>
-            <ion-icon name="share"></ion-icon>
-          </h1>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <!-- habilita as opções do item -->
-    <ion-item-sliding>
-      <!-- dados do pokemon -->
-      <ion-item track="fighting" >
-        <ion-chip color="fighting" slot="start">066</ion-chip>
-        <ion-label>
-          <h2>Machop</h2>
-          <ion-badge color="fighting">Fighting</ion-badge>
-        </ion-label>
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/066.png">
-        </ion-thumbnail>
-      </ion-item>
-      <!-- Opção do pokemon -->
-      <ion-item-options side="end">
-        <ion-item-option color="primary">
-          <h1>
-            <ion-icon name="star"></ion-icon>
-          </h1>
-        </ion-item-option>
-        <ion-item-option color="danger">
-          <h1>
-            <ion-icon name="share"></ion-icon>
-          </h1>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <!-- habilita as opções do item -->
-    <ion-item-sliding>
-      <!-- dados do pokemon -->
-      <ion-item track="ghost">
-        <ion-chip color="ghost" slot="start">092</ion-chip>
-        <ion-label>
-          <h2>Gastly</h2>
-          <ion-badge color="ghost">Ghost</ion-badge>&nbsp; <ion-badge color="poison">Poison</ion-badge>
-        </ion-label>
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/092.png">
-        </ion-thumbnail>
-      </ion-item>
-      <!-- Opção do pokemon -->
-      <ion-item-options side="end">
-        <ion-item-option color="primary">
-          <h1>
-            <ion-icon name="star"></ion-icon>
-          </h1>
-        </ion-item-option>
-        <ion-item-option color="danger">
-          <h1>
-            <ion-icon name="share"></ion-icon>
-          </h1>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <!-- habilita as opções do item -->
-    <ion-item-sliding>
-      <!-- dados do pokemon -->
-      <ion-item track="rock">
-        <ion-chip color="rock" slot="start">095</ion-chip>
-        <ion-label>
-          <h2>Onix</h2>
-          <ion-badge color="rock">Rock</ion-badge>&nbsp;<ion-badge color="ground">Ground</ion-badge>
-        </ion-label>
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/095.png">
-        </ion-thumbnail>
-      </ion-item>
-      <!-- Opção do pokemon -->
-      <ion-item-options side="end">
-        <ion-item-option color="primary">
-          <h1>
-            <ion-icon name="star"></ion-icon>
-          </h1>
-        </ion-item-option>
-        <ion-item-option color="danger">
-          <h1>
-            <ion-icon name="share"></ion-icon>
-          </h1>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <!-- habilita as opções do item -->
-    <ion-item-sliding>
-      <!-- dados do pokemon -->
-      <ion-item track="psychic">
-        <ion-chip color="psychic" slot="start">122</ion-chip>
-        <ion-label>
-          <h2>Mr. Mime</h2>
-          <ion-badge color="psychic">Psychic</ion-badge>&nbsp;<ion-badge color="fairy">Fairy</ion-badge>
-        </ion-label>
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/122.png">
-        </ion-thumbnail>
-      </ion-item>
-      <!-- Opção do pokemon -->
-      <ion-item-options side="end">
-        <ion-item-option color="primary">
-          <h1>
-            <ion-icon name="star"></ion-icon>
-          </h1>
-        </ion-item-option>
-        <ion-item-option color="danger">
-          <h1>
-            <ion-icon name="share"></ion-icon>
-          </h1>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-
-    <!-- habilita as opções do item -->
-    <ion-item-sliding>
-      <!-- dados do pokemon -->
-      <ion-item track="dragon">
-        <ion-chip color="dragon" slot="start">149</ion-chip>
-        <ion-label>
-          <h2>Dragonite</h2>
-          <ion-badge color="dragon">Dragon</ion-badge>&nbsp;<ion-badge color="fly">Fly</ion-badge>
-        </ion-label>
-        <ion-thumbnail slot="end">
-          <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/149.png">
-        </ion-thumbnail>
-      </ion-item>
-      <!-- Opção do pokemon -->
-      <ion-item-options side="end">
-        <ion-item-option color="primary">
-          <h1>
-            <ion-icon name="star"></ion-icon>
-          </h1>
-        </ion-item-option>
-        <ion-item-option color="danger">
-          <h1>
-            <ion-icon name="share"></ion-icon>
-          </h1>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
 
   </ion-list>
 </ion-content>
